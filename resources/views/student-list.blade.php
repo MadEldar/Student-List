@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-@include("admin/layout/head")
+@include("layout/head")
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Navbar -->
-    @include("admin/layout/nav")
+    @include("layout/nav")
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include("admin/layout/main-sidebar")
+    @include("layout/main-sidebar")
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -18,12 +18,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Users</h1>
+                        <h1>Students</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/admin/home') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Users</li>
+                            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Students</li>
                         </ol>
                     </div>
                     @if ($errors->any())
@@ -43,40 +43,38 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">All users</h3>
+                            <h3 class="card-title">All students</h3>
                             <button class="btn btn-primary float-right px-4 py-2" data-toggle="modal"
-                            data-target="#modal-new-user">Create new user</button>
+                            data-target="#modal-new-student">Create new student</button>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="table-user" class="table table-bordered table-hover">
+                            <table id="table-student" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Verified at</th>
-                                    <th>Deactivated at</th>
+                                    <th>Age</th>
+                                    <th>Address</th>
+                                    <th>Telephone</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($users as $user)
+                                @forelse($students as $stu)
                                 <tr>
-                                    <td data-target="id">{{ $user->id }}</td>
-                                    <td data-target="name">{{ $user->name }}</td>
-                                    <td data-target="email">{{ $user->email }}</td>
-                                    <td data-target="role">{{ $user->role }}</td>
-                                    <td data-target="email_verified_at">{{ $user->email_verified_at }}</td>
-                                    <td data-target="deactivated_at">{{ $user->deactivated_at }}</td>
-                                    <td>{{ $user->created_at }}</td>
-                                    <td>{{ $user->updated_at }}</td>
+                                    <td data-target="id">{{ $stu->id }}</td>
+                                    <td data-target="name">{{ $stu->name }}</td>
+                                    <td data-target="age" class="ellipsis">{{ $stu->age }}</td>
+                                    <td data-target="address" class="ellipsis">{{ $stu->address }}</td>
+                                    <td data-target="telephone" class="ellipsis">{{ $stu->telephone }}</td>
+                                    <td>{{ $stu->created_at }}</td>
+                                    <td>{{ $stu->updated_at }}</td>
                                     <td class="d-flex justify-content-around">
-                                        <a data-toggle="modal" data-target="#modal-edit-user"><i class="far fa-edit"></i></a>
-                                        <a data-toggle="modal" data-target="#modal-delete-user"><i class="far fa-trash-alt"></i></a>
+                                        <a data-toggle="modal" data-target="#modal-edit-student"><i class="far fa-edit"></i></a>
+                                        <a data-toggle="modal" data-target="#modal-delete-student"><i class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                                 @empty
@@ -97,32 +95,32 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <div class="modal fade" id="modal-new-user">
+    <div class="modal fade" id="modal-new-student">
         <div class="modal-dialog modal-lg">
-            <form class="modal-content" action="{{ url('/admin/users/create') }}" method="post">
+            <form class="modal-content" action="{{ url('/create') }}" method="post">
                 @csrf
                 <div class="modal-header">
-                    <h4 class="modal-title">Create new user</h4>
+                    <h4 class="modal-title">Create new student</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>User name</label>
-                        <input name="name" class="form-control" placeholder="Enter user name" value="{{ old('name') }}">
+                        <label>Student name</label>
+                        <input name="name" class="form-control" placeholder="Enter student name" value="{{ old('name') }}">
                     </div>
                     <div class="form-group">
-                        <label>User email</label>
-                        <input name="email" class="form-control" placeholder="Enter user email" value="{{ old('email') }}">
+                        <label>Student age</label>
+                        <input name="age" class="form-control" placeholder="Enter student age" value="{{ old('age') }}">
                     </div>
                     <div class="form-group">
-                        <label>User password</label>
-                        <input name="password" class="form-control" placeholder="Enter user password" value="{{ old('password') }}">
+                        <label>Student address</label>
+                        <input name="address" class="form-control" placeholder="Enter student address" value="{{ old('address') }}">
                     </div>
                     <div class="form-group">
-                        <label>User role</label>
-                        <input name="role" class="form-control" placeholder="Enter user email" value="{{ old('role') }}">
+                        <label>Student telephone</label>
+                        <input name="telephone" class="form-control" placeholder="Enter student telephone" value="{{ old('telephone') }}">
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -136,28 +134,32 @@
     </div>
     <!-- /.modal -->
 
-    <div class="modal fade" id="modal-edit-user">
+    <div class="modal fade" id="modal-edit-student">
         <div class="modal-dialog modal-lg">
-            <form class="modal-content" action="{{ url('/admin/users/edit') }}" method="post">
+            <form class="modal-content" action="{{ url('/edit') }}" method="post">
                 @csrf
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit user</h4>
+                    <h4 class="modal-title">Edit student</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>User name</label>
-                        <input name="name" class="form-control" placeholder="Enter user name" value="{{ old('name') }}">
+                        <label>Student name</label>
+                        <input name="name" class="form-control" placeholder="Enter student name">
                     </div>
                     <div class="form-group">
-                        <label>User email</label>
-                        <input name="email" class="form-control" placeholder="Enter user email" value="{{ old('email') }}">
+                        <label>Student age</label>
+                        <input name="age" class="form-control" placeholder="Enter student age">
                     </div>
                     <div class="form-group">
-                        <label>User role</label>
-                        <input name="role" class="form-control" placeholder="Enter user role" value="{{ old('role') }}">
+                        <label>Student address</label>
+                        <input name="address" class="form-control" placeholder="Enter student address">
+                    </div>
+                    <div class="form-group">
+                        <label>Student telephone</label>
+                        <input name="telephone" class="form-control" placeholder="Enter student telephone">
                     </div>
                     <input type="hidden" name="id">
                 </div>
@@ -172,18 +174,18 @@
     </div>
     <!-- /.modal -->
 
-    <div class="modal fade" id="modal-delete-user">
+    <div class="modal fade" id="modal-delete-student">
         <div class="modal-dialog modal-lg">
-            <form class="modal-content" action="{{ url('/admin/users/delete') }}" method="post">
+            <form class="modal-content" action="{{ url('/delete') }}" method="post">
                 @csrf
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete user</h4>
+                    <h4 class="modal-title">Delete student</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this user?
+                    Are you sure you want to delete this student?
                     <input type="hidden" name="id">
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -197,13 +199,13 @@
     </div>
     <!-- /.modal -->
 
-    @include("admin/layout/footer")
+    @include("layout/footer")
 
     <!-- Control Sidebar -->
-    @include("admin/layout/sidebar")
+    @include("layout/sidebar")
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-@include("admin/layout/scripts")
+@include("layout/scripts")
 </body>
 </html>

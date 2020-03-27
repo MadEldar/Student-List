@@ -13,11 +13,7 @@ use \Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'dailyShop@homepage');
-Route::get('/search', 'dailyShop@search');
-Route::get('/product/{proId}', 'dailyShop@product');
-Route::get('/sign-in', 'dailyShop@signInView');
-Route::post('/sign-in', 'dailyShop@signIn');
-Route::get('/sign-up', 'dailyShop@signUpView');
-Route::post('/sign-up', 'dailyShop@signUp');
-Route::get('/sign-out', 'dailyShop@signOut');
+Route::get('/', 'MainController@studentList');
+Route::post('/create', 'MainController@studentCreate');
+Route::post('/edit', 'MainController@studentEdit');
+Route::post('/delete', 'MainController@studentDelete');
