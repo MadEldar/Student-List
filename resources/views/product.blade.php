@@ -54,13 +54,9 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Thumbnail</th>
-                                    <th>Gallery</th>
-                                    <th>Brand</th>
-                                    <th>Category</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
+                                    <th>Age</th>
+                                    <th>Address</th>
+                                    <th>Telephone</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
                                     <th>Actions</th>
@@ -70,14 +66,10 @@
                                 @forelse($products as $pro)
                                 <tr>
                                     <td data-target="id">{{ $pro->id }}</td>
-                                    <td data-target="product_name">{{ $pro->product_name }}</td>
-                                    <td data-target="product_desc" style="max-width: 200px" class="ellipsis">{{ $pro->product_desc }}</td>
-                                    <td data-target="product_thumbnail" style="max-width: 200px" class="ellipsis">{{ $pro->product_thumbnail }}</td>
-                                    <td data-target="product_gallery" style="max-width: 200px" class="ellipsis">{{ $pro->product_gallery }}</td>
-                                    <td data-target="brand_name">{{ $pro->Brand->brand_name }}</td>
-                                    <td data-target="category_name">{{ $pro->Category->category_name }}</td>
-                                    <td data-target="quantity" class="number">{{ $pro->quantity }}</td>
-                                    <td data-target="price" class="number">{{ number_format($pro->price, 2) }}</td>
+                                    <td data-target="name">{{ $pro->name }}</td>
+                                    <td data-target="age" class="ellipsis">{{ $pro->age }}</td>
+                                    <td data-target="address" class="ellipsis">{{ $pro->address }}</td>
+                                    <td data-target="telephone" class="ellipsis">{{ $pro->telephone }}</td>
                                     <td>{{ $pro->created_at }}</td>
                                     <td>{{ $pro->updated_at }}</td>
                                     <td class="d-flex justify-content-around">
