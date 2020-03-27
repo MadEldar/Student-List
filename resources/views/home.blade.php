@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-@include("admin/layout/head")
+@include("layout/head")
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Navbar -->
-    @include("admin/layout/nav")
+    @include("layout/nav")
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include("admin/layout/main-sidebar")
+    @include("layout/main-sidebar")
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -622,13 +622,13 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    @include("admin/layout/footer")
+    @include("layout/footer")
 
     <!-- Control Sidebar -->
-    @include("admin/layout/sidebar")
+    @include("layout/sidebar")
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-@include("admin/layout/scripts")
+@include("layout/scripts")
 </body>
 </html>
